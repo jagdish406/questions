@@ -1,0 +1,59 @@
+<div>
+  <form [formGroup]="myforms">
+
+    <div *ngFor="let x of data">
+      <h1> {{x.questionsName}}</h1>
+      <div *ngIf="x.questiontypeId == 3">
+
+        <input type="radio" name="gender" value="male" formContralName="male"> Male
+        <input type="radio" name="gender" value="female" formContralName="female" female> Female
+
+      </div>
+      <div *ngIf="x.questiontypeId == 1">
+        <label for="" *ngFor="let items of x.options">
+          <input type="radio" name="age" [value]="items.age" formContralName="age"> {{items.age}}</label>
+
+
+      </div>
+      <div *ngIf="x.questiontypeId ==4 ">
+        <label for="" *ngFor="let items of x.options">
+          <input type="radio" [value]="items.age" formContralName="tech"> {{items.tech}}</label> <br>
+
+
+      </div>
+      <div *ngIf="x.questiontypeId == 2">
+        <select #sel formContralName="sel">
+
+          <ng-container *ngFor="let ab of x.options">
+
+            <option [value]="ab.tech">{{ab.tech}}</option>
+
+
+          </ng-container>
+
+        </select>
+
+
+      </div>
+    </div>
+
+
+
+    <button type="submit" (click)="onSave($event)">onSave</button>
+  </form>
+
+</div>
+
+<div>
+<form #searchForm="ngForm">
+<input type="text" placeholder="searchdata" name="seachText" ngModel class="search">
+</form>
+</div>
+
+<table>
+  <tr *ngFor="let itemsr of showRecords; index as i">
+    <td>{{i}}</td>
+    <td>{{itemsr.title}}</td>
+
+  </tr>
+</table>
