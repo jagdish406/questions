@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable , Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ServiceNameService {
 uers:any="https://dummyjson.com/products/search?q";
+isVisible = new Subject<boolean>()
+
     mocksD:any = [
         {
             questionsName: 'what is your age?',
@@ -34,7 +36,7 @@ uers:any="https://dummyjson.com/products/search?q";
                 {   tech:'java',
 
                 },
-                {   tech:'.net',                    
+                {   tech:'.net',
                 },
                 {   tech:'pythons'
                 }
@@ -44,7 +46,7 @@ uers:any="https://dummyjson.com/products/search?q";
         {
             questionsName: 'select gender?',
             questiontypeId: 3,
-           
+
 
         },
         {
@@ -56,7 +58,7 @@ uers:any="https://dummyjson.com/products/search?q";
                 {   tech:'mumbai',
 
                 },
-                {   tech:'us',                    
+                {   tech:'us',
                 },
                 {   tech:'ca'
                 },
@@ -65,7 +67,7 @@ uers:any="https://dummyjson.com/products/search?q";
                 {   tech:'del',
 
                 },
-                {   tech:'chennai',                    
+                {   tech:'chennai',
                 },
                 {   tech:'hyd'
                 }
@@ -77,9 +79,9 @@ uers:any="https://dummyjson.com/products/search?q";
 
     getServices(){
         return this.http.get(this.mocksD)
-    }  
+    }
     getServicesList(data:any):Observable<any>{
         return this.http.get(this.uers + '=' +data)
     }
-    
+
 }

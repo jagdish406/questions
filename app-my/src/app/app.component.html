@@ -1,4 +1,19 @@
 <div>
+<nav>
+<ul>
+  <li [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</li>
+  <li [routerLink]="['/about']" routerLinkActive="router-link-active" >About</li>
+  <li *ngIf="crouters" [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</li>
+</ul>
+
+</nav>
+
+<div>
+<router-outlet></router-outlet>
+
+
+</div>
+
   <form [formGroup]="myforms">
 
     <div *ngFor="let x of data">
@@ -50,7 +65,7 @@
 </form>
 </div>
 
-<table>
+<table *ngIf="!flag">
   <tr *ngFor="let itemsr of showRecords; index as i">
     <td>{{i}}</td>
     <td>{{itemsr.title}}</td>
